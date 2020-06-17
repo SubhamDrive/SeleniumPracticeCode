@@ -3,24 +3,37 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationForm {
     public static void main(String s[])
     {
+        String EmailId = "subham@driveu.in";
         System.setProperty("webdriver.chrome.driver","/Users/driveu/Downloads/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("http://automationpractice.com/index.php");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         driver.findElement(By.linkText("Sign in")).click();
-        driver.findElement(By.cssSelector("[name='email_create']")).sendKeys("choudharysubham47@gmail.com");
+        driver.findElement(By.cssSelector("[name='email_create']")).sendKeys(EmailId);
         driver.findElement(By.id("SubmitCreate")).click();
+       // String msg = driver.findElement(By.xpath("//*[@id=\"create_account_error\"]/ol/li")).getText();
+
+        /*if(msg.equals("Invalid email address.")) {
+            System.out.println("Invalid Email Id please enter valid emailid");
+        }else if(msg.equalsIgnoreCase("An account using this email address has already been registered. Please enter a valid password or request a new one."))
+        {
+            System.out.println(EmailId +"This EmailId Is already Registered"); }
+        else {
+            System.out.println("Welcome You Are OnBoarded"); }*/
+
         driver.findElement(By.id("id_gender1")).click();
         driver.findElement(By.name("customer_firstname")).sendKeys("Subham");
         driver.findElement(By.name("customer_lastname")).sendKeys("Choudhary");
-        driver.findElement(By.id("passwd")).sendKeys("Subham456");
+            driver.findElement(By.id("passwd")).sendKeys("Subham456");
         WebElement el = driver.findElement(By.id("days"));
         Select select = new Select(el);
         select.selectByIndex(12);
@@ -58,7 +71,6 @@ public class RegistrationForm {
         driver.findElement(By.xpath("//input[@name=\"alias\"]")).sendKeys("Office");
         driver.findElement(By.name("submitAccount")).click();
         String userText=driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).getText();
-
 
 
 
