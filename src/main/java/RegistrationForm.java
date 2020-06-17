@@ -33,7 +33,7 @@ public class RegistrationForm {
         driver.findElement(By.id("id_gender1")).click();
         driver.findElement(By.name("customer_firstname")).sendKeys("Subham");
         driver.findElement(By.name("customer_lastname")).sendKeys("Choudhary");
-        driver.findElement(By.id("passwd")).sendKeys("Subham456");
+            driver.findElement(By.id("passwd")).sendKeys("Subham456");
         WebElement el = driver.findElement(By.id("days"));
         Select select = new Select(el);
         select.selectByIndex(12);
